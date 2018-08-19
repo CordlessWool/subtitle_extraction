@@ -62,5 +62,9 @@ for track in $tracks; do
 		track_name=${track_name/\\h/#}   # replace '\h' with '#'
 	fi
 
+	if [[ ${dest: -1} == "/" ]]; then
+        dest=${dest::-1}
+	fi
+
 	mkvextract tracks "$file_name" "$track_id:${dest}/${sub_name%.*}.$name.$ext"
 done
