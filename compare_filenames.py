@@ -22,10 +22,9 @@ def extract_subs(srcname, destname, dest):
     global matches
 
     matches+=1
-    print(srcname)
-    print(dest)
-    print(destname)
-    os.system('./extract_sub.sh "{0}" "{1}" "{2}"'.format(srcname, destname, dest))
+    command = './extract_sub.sh "{0}" "{1}" "{2}"'.format(srcname, destname, dest)
+    print(command)
+    os.system(command)
 
 def deep_compare(first, second):
 
