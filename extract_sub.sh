@@ -51,7 +51,7 @@ for track in $tracks; do
 
 	name="$track_id"
 	if [[ "$language" != "" ]]; then
-		name="$language"
+		name="$name.$language"
 	fi
 
 	if [[ "$track_name" != "" ]]; then
