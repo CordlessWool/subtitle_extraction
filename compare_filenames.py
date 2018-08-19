@@ -121,7 +121,8 @@ for (src_dirpath, src_dirname, src_filenames) in os.walk(src):
                 for dest_filename in dest_filenames:
                     match = re.match(regex_files, dest_filename)
                     if match and compare_names(src_filename, dest_filename, 0.7):
-                        extract_subs(src_dirpath+src_filename, dest_filename, dest_dirpath)
+                        print(src_dirname)
+                        extract_subs(src_dirpath+"/"+src_filename, dest_filename, dest_dirname)
 
 
 print(matches)
