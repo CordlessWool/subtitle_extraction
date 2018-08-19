@@ -1,36 +1,8 @@
 #!/bin/bash
 #
-# Version 1
-#
-# (C) 2016 Daniel Faust <hessijames@gmail.com>
-#
-# A BASH script that extracts subtitles from a matroska file.
+# Script that extracts subtitles from a mkv file.
 #
 # Requires mkvmerge, mkvextract
-#
-# Usage:
-# chmod +x mkv-extract-subtitles
-# ./mkv-extract-subtitles "My File.mkv"
-#
-# This will create a new file for each subtitle in the current directory.
-#
-# For batch processing all .mkv files in the current directoy
-# copy mkv-extract-subtitles to a directory in your PATH and execute:
-#
-# find -iname "*.mkv" -exec mkv-extract-subtitles '{}' \;
-
-
-if [[ "$1" == "" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
-	echo
-	echo "Process single file:"
-	echo "mkv-extract-subtitles file.mkv"
-	echo
-	echo "Process multiple files:"
-	echo "find -iname \"*.mkv\" -exec mkv-extract-subtitles '{}'\;"
-	echo
-	exit
-fi
-
 
 hash mkvmerge 2>/dev/null || { echo >&2 "Error: Command mkvmerge not found"; exit 1; }
 hash mkvextract 2>/dev/null || { echo >&2 "Error: Command mkvextract not found"; exit 1; }
@@ -88,8 +60,6 @@ for track in $tracks; do
 		track_name=${track_name/\\2/\"}  # replace '\2' with '"'
 		track_name=${track_name/\\c/:}   # replace '\c' with ':'
 		track_name=${track_name/\\h/#}   # replace '\h' with '#'
-# 		track_name=${track_name/\\\\/\\} # replace '\\' with '\' doesn't work
-#		name="$name, $track_name"
 	fi
 
 	mkvextract tracks "$file_name" "$track_id:${dest}/${sub_name%.*}.$name.$ext"
