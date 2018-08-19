@@ -12,9 +12,8 @@ docker run --rm -d \\\
 -v <destination>:/data/dest \\\
 cordlesswool/subtitle_extraction:latest
 
+<br />
 
-To run python script install first mkvtoolnix via apt: 
-
-pip3 install regex
-
+To run python script install first mkvtoolnix via apt: <br /> 
+pip3 install regex <br />
 python3 ./extract_sub.py \<source> \<destination>
